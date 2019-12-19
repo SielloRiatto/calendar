@@ -1,8 +1,24 @@
 import React from 'react';
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
 
-function App() {
+import rootReducer from './reducers'
+import CalendarHeader from "./components/CalendarHeader";
+import CalendarBody from "./components/CalendarBody";
+
+const store = createStore(
+  rootReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
+
+const App = () => {
   return (
-    <div><p>Hello!</p></div>
+  	<Provider store={store}>
+	  	<div className="container">
+	  		<CalendarHeader />
+	  		<CalendarBody />
+	  	</div>
+	</Provider>
   );
 }
 
