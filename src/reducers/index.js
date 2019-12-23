@@ -1,17 +1,17 @@
-import moment from 'moment';
+import moment from 'moment'
 
 const initialState = {
-  today: moment()
+  date: moment()
 }
 
-const reduser = (state = initialState, action) => {
+const dateContext = (state = initialState, action) => {
   switch (action.type) {
 
-    case 'UPDATE_SOLUTION':
-      return action.solution
+    case 'ADD_VACATION':
+      return state
 
     default: return state
   }
 }
 
-export default reduser
+export default dateContext

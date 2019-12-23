@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 
 import rootReducer from './reducers'
 import CalendarHeader from "./components/CalendarHeader";
-import CalendarBody from "./components/CalendarBody";
+import CalendarBodyWrapper from "./components/CalendarBodyWrapper";
 
 const store = createStore(
   rootReducer,
@@ -16,7 +16,7 @@ const App = () => {
   	<Provider store={store}>
 	  	<div className="container">
 	  		<CalendarHeader />
-	  		<CalendarBody />
+	  		<CalendarBodyWrapper />
 	  	</div>
 	</Provider>
   );
