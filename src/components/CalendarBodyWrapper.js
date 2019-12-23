@@ -4,9 +4,7 @@ import CalendarBodyContainer from '../containers/CalendarBodyContainer'
 
 const CalendarBodyWrapper = () => {
   return (
-  	<div className="calendar-body">
       <CalendarBodyContainer />
-    </div>
   );
 }
 

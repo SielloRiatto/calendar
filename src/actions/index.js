@@ -1,6 +1,11 @@
-export const addNode = name => ({
-  type: 'ADD_NODE',
-  id: uuid.v4(),
-  name: name,
-  contacts: [],
+export const selectToday = () => ({
+  type: 'SELECT_TODAY'
+})
+
+export const selectNextMonth = () => ({
+  type: 'SELECT_NEXT_MONTH'
+})
+
+export const selectPrevMonth = () => ({
+  type: 'SELECT_PREV_MONTH'
 })

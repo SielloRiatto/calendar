@@ -1,14 +1,26 @@
 import moment from 'moment'
 
 const initialState = {
-  date: moment()
+  selectedMonth: moment(),
 }
 
 const dateContext = (state = initialState, action) => {
-  switch (action.type) {
+	
+	let newState = state
 
-    case 'ADD_VACATION':
-      return state
+  switch (action.type) {
+    
+    case 'SELECT_TODAY':
+    	newState.selectedMonth = moment()
+      return newState
+
+    case 'SELECT_NEXT_MONTH':
+    	newState.selectedMonth = state.selectedMonth.add(1,"month")
+      return newState
+
+    case 'SELECT_PREV_MONTH':
+    	newState.selectedMonth = state.selectedMonth.subtract(1,"month")
+      return newState
 
     default: return state
   }

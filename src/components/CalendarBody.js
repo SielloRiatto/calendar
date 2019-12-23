@@ -3,41 +3,34 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import moment from 'moment'
 
-
 const CalendarBody = ({ dateContext }) => {
   
-  const weekdays = moment.weekdays();
-  const weekdaysShort = moment.weekdaysShort();
-  const months = moment.month();
+  const weekdays = moment.weekdays()
+  const weekdaysShort = moment.weekdaysShort()
+  const months = moment.months()
 
-  const year = () => { return dateContext.format("Y") }
-  const month = () => { return dateContext.format("MMMM") }
-  const daysInMonth = () => { return dateContext.daysInMonth() }
-  const currentDate = () => { return dateContext.get("date") }
-  const currentDay = () => { return dateContext.format("D") }
+  const year = () => { return moment.format("Y") }
+  const month = () => { return moment.format("MMMM") }
+  const daysInMonth = () => { return moment.daysInMonth() }
+  const currentDate = () => { return moment.get("date") }
+  const currentDay = () => { return moment.format("D") }
 
   return (
   	<div className="calendar-body">
 
   		<div className="headings" role="row">
 			
-      {weekdaysShort.map((day) => 
-        <div className="col" role="columnheader">
-          {day}
-        </div>
-      )}
-      
-		</div>
-
-		<div className="month-body" role="rowgroup">
-			<div></div>
+        {weekdaysShort.map( (day, i) => 
+          <div className="col" role="columnheader" key="{i}">{day}</div>
+        )}
+        
   		</div>
-  	</div>
+
+  		<div className="month-body" role="rowgroup">
+  			<div></div>
+    	</div>
+    </div>
   );
 }
 
-CalendarBody.propTypes = {
-  dateContext: PropTypes.string.isRequired,
-}
-
-export default connect()(CalendarBody);
+export default connect()(CalendarBody)

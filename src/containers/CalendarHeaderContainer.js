@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import CalendarBody from '../components/CalendarBody'
+import CalendarHeader from '../components/CalendarHeader'
 
 const getDateContext = (dateContext) => {
   return dateContext
@@ -9,4 +9,4 @@ const mapStateToProps = state => ({
   dateContext: getDateContext(state.dateContext)
 })
 
-export default connect(mapStateToProps)(CalendarBody)
+export default connect(mapStateToProps)(CalendarHeader)
