@@ -1,12 +1,18 @@
 import { connect } from 'react-redux'
 import CalendarHeader from '../components/CalendarHeader'
+import moment from 'moment'
 
-const getDateContext = (dateContext) => {
-  return dateContext
+const getMonth = month => {
+  return month
+}
+
+const getYear = year => {
+  return year
 }
 
 const mapStateToProps = state => ({
-  dateContext: getDateContext(state.dateContext)
+  month: getMonth(state.dateContext.selectedDate.format("MMMM")),
+  year: getYear(state.dateContext.selectedDate.format("YYYY")),
 })
 
 export default connect(mapStateToProps)(CalendarHeader)

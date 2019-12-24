@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import CalendarBody from '../components/CalendarBody'
 
-const getDateContext = (dateContext) => {
+const getDateContext = dateContext => {
   return dateContext
 }
 

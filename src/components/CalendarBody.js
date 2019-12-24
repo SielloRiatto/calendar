@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import moment from 'moment'
 
-const CalendarBody = ({ dateContext }) => {
+const CalendarBody = () => {
   
   const weekdays = moment.weekdays()
   const weekdaysShort = moment.weekdaysShort()
