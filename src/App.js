@@ -1,6 +1,7 @@
 import React from 'react';
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
+import './assets/styles/style.sass'
 
 import CalendarHeaderWrapper from "./components/CalendarHeaderWrapper"
 import CalendarBodyWrapper from "./components/CalendarBodyWrapper"

@@ -1,12 +1,13 @@
 import { connect } from 'react-redux'
 import CalendarBody from '../components/CalendarBody'
+import moment from 'moment'
 
-const getDateContext = dateContext => {
-  return dateContext
+const getSelectedDate = selectedDate => {
+  return selectedDate
 }
 
 const mapStateToProps = state => ({
-  dateContext: getDateContext(state.dateContext)
+  selectedDate: getSelectedDate(state.dateContext.selectedDate)
 })
 
 export default connect(mapStateToProps)(CalendarBody)

@@ -16,11 +16,28 @@ module.exports = {
         use: {
           loader: "babel-loader"
         },
+      },{
+        test: /\.(?:sa|sc|c)ss$/,
+        use: [
+          require.resolve('style-loader'),
+          {
+            loader: require.resolve('css-loader'),
+          },
+          {
+            loader: require.resolve('sass-loader'),
+          },
+        ]
+      },{
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]'
+            }
+          }
+        ]
       },
-      {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"]
-      }
     ]
   },
   plugins: [

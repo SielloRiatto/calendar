@@ -7,8 +7,8 @@ const CalendarHeader = ({ month, year, dispatch }) => (
 
 	<div className="calendar-header">
 		<div className="month">
-      {month} 
-			<span className="year"> {year}</span> г.
+      <strong>{month} </strong>
+			{year} г.
 		</div>
 		<div className="day-nav">
 			<button 
@@ -37,8 +37,8 @@ const CalendarHeader = ({ month, year, dispatch }) => (
 )
 
 CalendarHeader.propTypes = {
-  month: PropTypes.func.isRequired,
-  year: PropTypes.func.isRequired,
+  month: PropTypes.string.isRequired,
+  year: PropTypes.string.isRequired,
 }
 
 export default connect()(CalendarHeader)
