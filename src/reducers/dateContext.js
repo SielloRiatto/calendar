@@ -13,19 +13,20 @@ const initialState = {
 }
 
 const selectToday = (newState) => {
-  newState.selectedDate = moment()
+  debugger
   newState.contain = changeCalendar(newState.selectedDate, newState.usersData.users)
   return {...newState}
 }
 
 const selectNext = (newState) => {
-  newState.selectedDate = newState.selectedDate.add(1,"month")
+  debugger
   newState.contain = changeCalendar(newState.selectedDate, newState.usersData.users)
+  debugger
   return {...newState}
 }
 
 const selectPrev = (newState) => {
-  newState.selectedDate = newState.selectedDate.subtract(1,"month")
+  debugger
   newState.contain = changeCalendar(newState.selectedDate, newState.usersData.users)
   return {...newState}
 }

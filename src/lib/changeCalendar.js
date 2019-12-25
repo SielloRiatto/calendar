@@ -4,10 +4,10 @@ import React from 'react'
 const changeCalendar = (changedDate = moment(), users = []) => {
 
   let year = () => { return changedDate.format("Y")}
-  let month = () => { return changedDate.format("MMMM") }
+  let month = () => { return changedDate.format("MM") }
   let daysInMonth = () => { return changedDate.daysInMonth() }
   let currentDate = () => { return changedDate.get("date") }
-  let currentDay = () => { return changedDate.format("D") }
+  let currentDay = () => { return moment().format("D") }
   let firstDayOfMonth = () => { return changedDate.startOf('month').format('d') }
   let lastDayOfMonth = () => { return changedDate.endOf('month').format('d') }
 
@@ -20,10 +20,22 @@ const changeCalendar = (changedDate = moment(), users = []) => {
 
   let daysMonth = [];
   for (let d = 1; d <= daysInMonth(); d++) {
-      let className = (d == currentDay() ? "col day current-day": "col day")
+      let className = (d == currentDay() && month() == moment().format("MM") ? "col day current-day": "col day")
       daysMonth.push(
         <div className={ className } key={d}>
-          <span>{d}</span> 
+          <span>{ d }</span> 
+          <div>{ 
+            users.map((user) => {
+              const userDates = {
+                firstDate: moment(user.firstDate, "DD-MM-YYYY"),
+                lastDate: moment(user.lastDate, "DD-MM-YYYY")
+              }
+              if (  userDates.firstDate.isSameOrBefore(changedDate, "month") 
+                      && userDates.lastDate.isSameOrAfter(changedDate, "month")){
+                return <div key={user.name} className="blue">{user.name}</div>
+              }
+            })
+          }</div>
         </div>
       );
   }
@@ -34,7 +46,6 @@ const changeCalendar = (changedDate = moment(), users = []) => {
         <div className={"col emptySlot"} role="columnheader" key={i*70}>{""}</div>
       )
   }
-
 
   var totalSlots = [...firstBlanks, ...daysMonth, ...lastBlanks]
   let rows = []

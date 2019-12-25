@@ -3,7 +3,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: ['babel-polyfill', './src/index.js'],
   output: {
     path: path.join(__dirname, "/dist"),
     filename: "index_bundle.js"
@@ -17,16 +17,8 @@ module.exports = {
           loader: "babel-loader"
         },
       },{
-        test: /\.(?:sa|sc|c)ss$/,
-        use: [
-          require.resolve('style-loader'),
-          {
-            loader: require.resolve('css-loader'),
-          },
-          {
-            loader: require.resolve('sass-loader'),
-          },
-        ]
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
       },{
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
         use: [

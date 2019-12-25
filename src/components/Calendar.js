@@ -9,7 +9,7 @@ import CalendarBody from "./CalendarBody"
 const Calendar = ({ dateContext }) => {
 	return(
 	  <div className="container">
-	  	<CalendarHeader month={dateContext.selectedDate.format("MMMM")} year={dateContext.selectedDate.format("YYYY") } />
+	  	<CalendarHeader dateContext={dateContext} />
 	  	{dateContext.usersData.error && <span className='users-list-error'>{dateContext.usersData.error}</span>}
 	  	<CalendarBody contain={dateContext.contain} />
 	  </div>
