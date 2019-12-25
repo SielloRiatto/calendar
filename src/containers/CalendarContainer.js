@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import Calendar from '../components/Calendar'
 import moment from 'moment'
 
-import fetchUsersAction from '../components/fetchUsersAction';
+import { selectToday, selectNextMonth, selectPrevMonth, fetchUsersAction } from '../actions'
 
 const getDateContext = dateContext => {
   return dateContext

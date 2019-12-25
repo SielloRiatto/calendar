@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { selectToday, selectNextMonth, selectPrevMonth } from '../actions'
+import { selectToday, selectNextMonth, selectPrevMonth, fetchUsersAction } from '../actions'
 
 const CalendarHeader = ({ month, year, dispatch }) => (
 
@@ -15,6 +15,7 @@ const CalendarHeader = ({ month, year, dispatch }) => (
         className="prev"
         onClick = { e => {
           e.preventDefault()
+          dispatch(fetchUsersAction())
           dispatch(selectPrevMonth())
         }}
       > prev </button>
@@ -22,6 +23,7 @@ const CalendarHeader = ({ month, year, dispatch }) => (
         className="today"
         onClick = { e => {
           e.preventDefault()
+          dispatch(fetchUsersAction())
           dispatch(selectToday())
         }}
       > Сегодня </button>
@@ -29,6 +31,7 @@ const CalendarHeader = ({ month, year, dispatch }) => (
         className="next"
         onClick = { e => {
           e.preventDefault()
+          dispatch(fetchUsersAction())
           dispatch(selectNextMonth())
         }}
       > next </button>

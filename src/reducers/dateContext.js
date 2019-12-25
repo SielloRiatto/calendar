@@ -50,15 +50,17 @@ const dateContext = (state = initialState, action) => {
           error: null
         }
       }
+      
     case 'FETCH_USERS_SUCCESS':
       return {
         ...state,
         usersData: {
           pending: false,
-          users: action.payload,
+          users: action.users,
           error: null
         }
       }
+      
     case 'FETCH_USERS_ERROR':
       return {
         ...state,

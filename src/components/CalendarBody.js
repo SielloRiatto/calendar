@@ -4,9 +4,7 @@ import { connect } from 'react-redux'
 import moment from 'moment'
 
 const CalendarBody = ({ contain }) => {
-  const weekdays = moment.weekdays()
   const weekdaysShort = moment.weekdaysShort()
-  const months = moment.months()
   
   return (
   	<div className="calendar-body">

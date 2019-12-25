@@ -5,14 +5,8 @@ import moment from 'moment'
 
 import CalendarHeader from "./CalendarHeader"
 import CalendarBody from "./CalendarBody"
-import fetchUsersAction from "./fetchUsersAction"
 
-import { selectToday, selectNextMonth, selectPrevMonth } from '../actions'
-
-const Calendar = ({ dateContext, dispatch }) => {
-
-	dispatch(fetchUsersAction(dateContext))
-
+const Calendar = ({ dateContext }) => {
 	return(
 	  <div className="container">
 	  	<CalendarHeader month={dateContext.selectedDate.format("MMMM")} year={dateContext.selectedDate.format("YYYY") } />
