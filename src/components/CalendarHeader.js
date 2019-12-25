@@ -36,9 +36,4 @@ const CalendarHeader = ({ month, year, dispatch }) => (
 	</div>
 )
 
-CalendarHeader.propTypes = {
-  month: PropTypes.string.isRequired,
-  year: PropTypes.string.isRequired,
-}
-
 export default connect()(CalendarHeader)

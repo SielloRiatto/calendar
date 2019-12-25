@@ -1,27 +1,110 @@
 import moment from 'moment'
+import React from 'react'
+
+const changeCalendar = (changedDate = moment(), users = []) => {
+
+  let year = () => { return changedDate.format("Y")}
+  let month = () => { return changedDate.format("MMMM") }
+  let daysInMonth = () => { return changedDate.daysInMonth() }
+  let currentDate = () => { return changedDate.get("date") }
+  let currentDay = () => { return changedDate.format("D") }
+  let firstDayOfMonth = () => { return changedDate.startOf('month').format('d') }
+  let lastDayOfMonth = () => { return changedDate.endOf('month').format('d') }
+
+  let firstBlanks = [];
+  for (let i = 0; i < firstDayOfMonth(); i++) {
+      firstBlanks.push(
+        <div className={"col emptySlot"} role="columnheader" key={i*80}>{""}</div>
+      )
+  }
+
+  let daysMonth = [];
+  for (let d = 1; d <= daysInMonth(); d++) {
+      let className = (d == currentDay() ? "col day current-day": "col day")
+      daysMonth.push(
+        <div className={ className } key={d}>
+          <span>{d}</span> 
+        </div>
+      );
+  }
+
+  let lastBlanks = [];
+  for (let i = 6; i > lastDayOfMonth(); i--) {
+      lastBlanks.push(
+        <div className={"col emptySlot"} role="columnheader" key={i*70}>{""}</div>
+      )
+  }
+
+
+  var totalSlots = [...firstBlanks, ...daysMonth, ...lastBlanks]
+  let rows = []
+  let cells = []
+
+  totalSlots.forEach((row, i) => {
+      if ((i % 7) !== 0) {
+          cells.push(row)
+      } else {
+          let insertRow = cells.slice();
+          rows.push(insertRow)
+          cells = []
+          cells.push(row)
+      }
+      if (i === totalSlots.length - 1) {
+          let insertRow = cells.slice()
+          rows.push(insertRow)
+      }
+  })
+
+  let trElems = rows.map((d, i) => {
+      return (
+        <div className="row" key={i*100}>
+          {d}
+        </div>
+      );
+  })
+
+  return trElems
+}
 
 const initialState = {
   selectedDate: moment(),
+  contain: changeCalendar(),
+  usersData: {
+    pending: false,
+    users: [],
+    error: null
+  }
+}
+
+const selectToday = (newState) => {
+  newState.selectedDate = moment()
+  newState.contain = changeCalendar(newState.selectedDate)
+  return {...newState}
+}
+
+const selectNext = (newState) => {
+  newState.selectedDate = newState.selectedDate.add(1,"month")
+  newState.contain = changeCalendar(newState.selectedDate)
+  return {...newState}
+}
+
+const selectPrev = (newState) => {
+  newState.selectedDate = newState.selectedDate.subtract(1,"month")
+  newState.contain = changeCalendar(newState.selectedDate)
+  return {...newState}
 }
 
 const dateContext = (state = initialState, action) => {
-	
-	let newState = state
-
   switch (action.type) {
-    
     case 'SELECT_TODAY':
-    	newState.selectedDate = moment()
-      return newState
+      return selectToday(state)
 
     case 'SELECT_NEXT_MONTH':
-    	newState.selectedDate = state.selectedDate.add(1,"month")
-      return newState
+      return selectNext(state)
 
     case 'SELECT_PREV_MONTH':
-    	newState.selectedDate = state.selectedDate.subtract(1,"month")
-      return newState
-
+      return selectPrev(state)
+      
     default: return state
   }
 }

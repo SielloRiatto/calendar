@@ -1,11 +1,13 @@
 import React from 'react';
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
 import './assets/styles/style.sass'
 
-import CalendarHeaderWrapper from "./components/CalendarHeaderWrapper"
-import CalendarBodyWrapper from "./components/CalendarBodyWrapper"
+/*import CalendarHeaderWrapper from "./components/CalendarHeaderWrapper"
+import CalendarBodyWrapper from "./components/CalendarBodyWrapper"*/
 
+import CalendarWrapper from "./components/CalendarWrapper"
+
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
 import rootReducer from './reducers'
 
 const store = createStore(
@@ -16,10 +18,7 @@ const store = createStore(
 const App = () => {
   return (
   	<Provider store={store}>
-	  	<div className="container">
-	  		<CalendarHeaderWrapper />
-	  		<CalendarBodyWrapper />
-	  	</div>
+	  	<CalendarWrapper />
 	</Provider>
   );
 }
