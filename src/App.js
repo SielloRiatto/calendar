@@ -1,12 +1,12 @@
 import React from 'react';
-import './assets/styles/style.css'
-
-import CalendarWrapper from "./components/CalendarWrapper"
-
+import { Provider } from 'react-redux'
 import { applyMiddleware, createStore } from 'redux'
 import thunk from 'redux-thunk'
-import { Provider } from 'react-redux'
+import moment from 'moment'
+
 import rootReducer from './reducers'
+import CalendarWrapper from "./components/CalendarWrapper"
+import './assets/styles/style.css'
 
 const middlewares = [thunk]
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -17,12 +17,10 @@ const store = createStore(
   	)
 )
 
-const App = () => {
-  return (
+const App = () => (
   	<Provider store={store}>
 	  	<CalendarWrapper />
 	</Provider>
-  );
-}
+)
 
 export default App
