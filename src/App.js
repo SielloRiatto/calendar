@@ -2,7 +2,6 @@ import React from 'react';
 import { Provider } from 'react-redux'
 import { applyMiddleware, createStore } from 'redux'
 import thunk from 'redux-thunk'
-import moment from 'moment'
 
 import rootReducer from './reducers'
 import CalendarWrapper from "./components/CalendarWrapper"

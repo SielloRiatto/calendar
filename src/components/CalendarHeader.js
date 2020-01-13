@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import moment from 'moment'
+import moment from 'moment' 
 import { fetchUsersAction } from '../utils'
 
 const CalendarHeader = ({ dateContext, dispatch }) => (

@@ -12,7 +12,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  fetchUsersAction: fetchUsersAction
+  fetchUsersAction: dispatch(fetchUsersAction())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Calendar)

@@ -1,15 +1,15 @@
 import moment from 'moment'
 import React from 'react'
+import {fetchUsersAction} from "../utils"
 
 const initialState = {
   selectedDate: moment(),
   usersData: {
-    pending: false,
+    pending: false, 
     users: [],
     error: null
   }
 }
-
 
 const dateContext = (state = initialState, action) => {
   switch (action.type) {
