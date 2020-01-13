@@ -16,8 +16,14 @@ export const getAllDates = date => {
 
   const nextMonth = moment(date).add(1, 'month');
   let firstDayOfNextMonth = firstDayOfMonth(nextMonth);
-
-  for (let d = daysInPrevMonth-firstDayOfSelectedMonth; d <= daysInPrevMonth; d++){
+  
+  for(
+    let d = firstDayOfSelectedMonth == 0 ? 
+        daysInPrevMonth - 5 : 
+        daysInPrevMonth-firstDayOfSelectedMonth + 2;
+    d <= daysInPrevMonth; 
+    d++
+  ){
     const newDate = moment(d + '.' + prevMonth.format("MM.YYYY"), "DD.MM.YYYY");
     dates.push(newDate);
   }
@@ -27,9 +33,10 @@ export const getAllDates = date => {
     dates.push(newDate);
   }
 
-  if(firstDayOfNextMonth != 6){
-    for (let d = 1; d <= 6-firstDayOfNextMonth; d++){
+  if(firstDayOfNextMonth != 1){
+    for (let d = 1; d <= 8-firstDayOfNextMonth; d++){
       const newDate = moment(d + '.' + nextMonth.format("MM.YYYY"), "DD.MM.YYYY");
+      if (newDate.format('d') == 1) break;
       dates.push(newDate);
     }
   }
@@ -65,9 +72,8 @@ export const fetchUsersAction = (selectedDate = moment()) =>
       ))
 
       dispatch(fetchUsersSuccess(json.users))
-
       return json.users
     }).catch(error => {
       dispatch(fetchUsersError(error));
     })
-  }
+  } 
