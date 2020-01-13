@@ -45,12 +45,8 @@ span{
     font-size: 0.8rem;
 }
 
-.row{
-	display: flex;
-}
-
 .col{
-	flex-basis: 14.286%;
+	flex-basis: calc(100%/7 - 11px);
 	text-align: right;
 	padding: 5px;
 }
@@ -79,23 +75,30 @@ span{
     font-size: 21px;
     font-weight: 300;
     text-transform: lowercase;
-    flex-basis: 80%;
+    flex-basis: 50%;
 }
 .container .calendar-header .day-nav{
-	flex-basis: 20%;
+	flex-basis: 50%;
+    text-align: right;
 }
 
 .container .calendar-body{
-	margin: 0 -5px -5px -5px;
+	margin: 0 -6px -5px -5px;
 }
 
 .container .calendar-body .headings{
-	display: flex;
+	display: flex;    
+	flex-wrap: wrap;
 }
 
 .container .calendar-body .headings .col{
 	font-weight: 300;
     text-transform: lowercase;
+}
+
+.container .calendar-body .month-body {
+	display: flex;    
+	flex-wrap: wrap;
 }
 
 .container .calendar-body .month-body .col{
@@ -104,17 +107,17 @@ span{
 	min-height: 100px;
 }
 
-.container .calendar-body .month-body .col:nth-child(7) {
+.container .calendar-body .month-body .col.sunday {
 	border-right: 0;
 }
 
-.container .calendar-body .month-body .col:nth-child(7),
-.container .calendar-body .month-body .col:nth-child(6){
+.container .calendar-body .month-body .col.sunday,
+.container .calendar-body .month-body .col.saturday{
 	background: #f4f4f4;
 }
 
-.container .calendar-body .month-body .col:nth-child(7) span,
-.container .calendar-body .month-body .col:nth-child(6) span{
+.container .calendar-body .month-body .col.sunday span,
+.container .calendar-body .month-body .col.saturday span{
 	color: #a9a9a9;
 }
 
@@ -122,4 +125,5 @@ span{
     background: #ffb2b2;
     border-radius: 100%;
     padding: 5px;
+    height: fit-content;
 }

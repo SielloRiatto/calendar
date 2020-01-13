@@ -1,9 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-require("babel-core/register")
-require("babel-polyfill")
 
 import App from './App'
+
+if (!global._babelPolyfill) {
+	require('babel-polyfill');
+}
 
 ReactDOM.render(
 	<App />, 

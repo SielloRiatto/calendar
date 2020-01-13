@@ -1,8 +1,7 @@
 import { connect } from 'react-redux'
 import Calendar from '../components/Calendar'
-import moment from 'moment'
 
-import { selectToday, selectNextMonth, selectPrevMonth, fetchUsersAction } from '../actions'
+import { fetchUsersAction } from '../utils'
 
 const getDateContext = dateContext => {
   return dateContext
@@ -13,7 +12,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    fetchUsersAction: fetchUsersAction
+  fetchUsersAction: fetchUsersAction
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Calendar)

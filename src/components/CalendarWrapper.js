@@ -3,10 +3,8 @@ import { connect } from 'react-redux'
 
 import CalendarContainer from "../containers/CalendarContainer"
 
-const CalendarWrapper = () => {
-	return(
-		<CalendarContainer />
-	)
-}
+const CalendarWrapper = () => (
+	<CalendarContainer />
+)
 
 export default connect()(CalendarWrapper)
