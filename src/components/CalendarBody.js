@@ -17,17 +17,18 @@ const CalendarBody = ({ dateContext }) => {
     <div className="headings" role="row">
       { 
         moment.weekdaysShort().map(day => 
-        <div className="col" role="columnheader" key={day}>{day}</div>
+        <div className="col" key={day}>{day}</div>
         )
       }
 		</div>
 
 		<div className="month-body" role="rowgroup">
       {getUsersPerDay(dateContext.selectedDate, dateContext.usersData.users)
-        .map( ({date, users}) => 
+        .map( ({date, isSelectedMonth, users}) => 
           <CalendarDate
             key={"date-" + Math.random()} 
             date={date} 
+            isSelectedMonth = {isSelectedMonth}
             usersVacationList={users}
           />
         )

@@ -11,20 +11,20 @@ const CalendarHeader = ({ dateContext, dispatch }) => (
 		</div>
 
 		<div className="day-nav">
-			<button onClick ={ e => {
+			<button className="btn btn-prev" onClick ={ e => {
         e.preventDefault()
         dispatch(fetchUsersAction(dateContext.selectedDate.subtract(1,"month")))
-      }}> prev </button>
+      }}><span></span></button>
 
-			<button onClick = { e => {
+			<button className="btn" onClick = { e => {
         e.preventDefault()
         dispatch(fetchUsersAction(dateContext.selectedDate = moment()))
       }}> Сегодня </button>
 
-			<button onClick = { e => {
+			<button className="btn btn-next" onClick = { e => {
         e.preventDefault()
         dispatch(fetchUsersAction(dateContext.selectedDate.add(1,"month")))
-      }}> next </button>
+      }}><span></span></button>
 		</div>
 	</div>
 )

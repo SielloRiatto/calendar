@@ -25,19 +25,19 @@ export const getAllDates = date => {
     d++
   ){
     const newDate = moment(d + '.' + prevMonth.format("MM.YYYY"), "DD.MM.YYYY");
-    dates.push(newDate);
+    dates.push({date: newDate, isSelectedMonth: false});
   }
 
   for (let d = 1; d <= daysInSelectedMonth; d++){
     const newDate = moment(d + '.' + date.format("MM.YYYY"), "DD.MM.YYYY");
-    dates.push(newDate);
+    dates.push({date: newDate, isSelectedMonth: true});
   }
 
   if(firstDayOfNextMonth != 1){
     for (let d = 1; d <= 8-firstDayOfNextMonth; d++){
       const newDate = moment(d + '.' + nextMonth.format("MM.YYYY"), "DD.MM.YYYY");
       if (newDate.format('d') == 1) break;
-      dates.push(newDate);
+      dates.push({date: newDate, isSelectedMonth: false});
     }
   }
 
@@ -47,8 +47,9 @@ export const getAllDates = date => {
 export const getUsersPerDay = (date, users) => {
   const dates = getAllDates(date);
 
-  return dates.map(date => ({
-    date: date, 
+  return dates.map(({date, isSelectedMonth}) => ({
+    date: date,
+    isSelectedMonth: isSelectedMonth,
     users: users.filter(user =>
         date.isSameOrAfter(moment(user.firstDate, "DD.MM.YYYY")) 
         && date.isSameOrBefore(moment(user.lastDate, "DD.MM.YYYY"))
@@ -59,7 +60,7 @@ export const getUsersPerDay = (date, users) => {
 export const fetchUsersAction = (selectedDate = moment()) =>
   async (dispatch) => {
     dispatch(fetchUsersPending());
-    await fetch('/src/api/generated.json')
+    await fetch('https://raw.githubusercontent.com/SielloRiatto/calendar/master/src/api/generated.json')
     .then(response => response.json())
     .then(json => {
       if (json.error) {

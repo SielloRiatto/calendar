@@ -45,6 +45,50 @@ span{
     font-size: 0.8rem;
 }
 
+.btn{
+	border: 1px solid #ebebeb;
+	border-radius: 3px;
+	margin: 0.05rem;
+	background: #fff;
+    box-shadow: 1px 1px 1px 1px #f9f9f9;
+    display: inline-block;
+    vertical-align: middle;
+    transition: all 0.3s;
+}
+
+.btn:hover {
+    box-shadow: 1px 1px 1px 1px #c2c2c2;
+    cursor: pointer;
+}
+
+.btn:hover:active {
+    box-shadow: 1px 1px 1px 1px #c2c2c2;
+    background: #c2c2c2;
+}
+
+.btn.btn-prev,
+.btn.btn-next {
+    padding: 5px 6px 5px;
+}
+
+.btn.btn-prev span,
+.btn.btn-next span {
+	width: 5px;
+	height: 5px;
+	border: 1px solid;
+	border-right: 0;
+	border-bottom: 0;    
+	display: block;
+}
+
+.btn.btn-prev span {
+	transform: rotate(-45deg);
+}
+
+.btn.btn-next span {
+	transform: rotate(135deg);
+}
+
 .col{
 	flex-basis: calc(100%/7 - 11px);
 	text-align: right;
@@ -89,6 +133,7 @@ span{
 .container .calendar-body .headings{
 	display: flex;    
 	flex-wrap: wrap;
+	border-bottom: 1px solid #e5e5e5;
 }
 
 .container .calendar-body .headings .col{
@@ -102,28 +147,39 @@ span{
 }
 
 .container .calendar-body .month-body .col{
-	border-top: 1px solid #a9a9a9;
-	border-right: 1px solid #a9a9a9;
+	border-top: 1px solid #e5e5e5;
+	border-right: 1px solid #e5e5e5;
 	min-height: 100px;
 }
 
-.container .calendar-body .month-body .col.sunday {
-	border-right: 0;
-}
+
 
 .container .calendar-body .month-body .col.sunday,
 .container .calendar-body .month-body .col.saturday{
 	background: #f4f4f4;
 }
+.container .calendar-body .month-body .col.sunday {
+	border-right: 0;
+}
+
+.container .calendar-body .month-body .col.disabled-day span{
+	color: #cdcdcd;
+} 
 
 .container .calendar-body .month-body .col.sunday span,
-.container .calendar-body .month-body .col.saturday span{
-	color: #a9a9a9;
+.container .calendar-body .month-body .col.saturday span,
+.container .calendar-body .headings .col:nth-child(6),
+.container .calendar-body .headings .col:nth-child(7){
+	color: #7a7a7a;
 }
 
 .current-day span {
-    background: #ffb2b2;
+    background: #fd3638;
     border-radius: 100%;
     padding: 5px;
-    height: fit-content;
+    color: #fff;
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    text-align: center;
 }
